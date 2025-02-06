@@ -13,9 +13,9 @@ What this dump file showcases, that even in case of 32 bit wide sparse vector in
 *  0b11110111101
 *  0b11110111101
 * test: 63602695203 5628238883
-*  0b11101 1001111000001000001110000100011 As it can be seen, a good portion of the last bits are equal, and for some reason the first ones are inverses. 
-*  0b00010 1001111011110000001110000100011 It looks like the traversal can follow different paths on the two trees... if they rely on inverted bits!
-*                                          Such tree portions are mirrors, thus isomorphic, but then isomorphism is not quite what I was looking for...
+*  0b11101 1001111000001000001110000100011 
+*  0b00010 1001111011110000001110000100011 
+   * As it can be seen, a good portion of the last bits are equal, and for some reason the first ones are inverses. It looks like the traversal can follow different paths on the two trees... if they rely on inverted bits! Such tree portions are mirrors, thus isomorphic, but then isomorphism is not quite what I was looking for...
 * call count: 4090
 * matches: 39
 * pairs: [[0, 0], [1366, 660], [1223, 1188], [681, 1328], [1735, 280], [798, 1211], [1385, 670], [246, 1808], [832, 1106], [1184, 1143], [448, 432], [712, 1254], [110, 128], [1822, 124], [1280, 688], [491, 1520], [561, 1467], [1634, 419], [1292, 695], [839, 1112], [702, 1237], [630, 622], [1397, 1366], [106, 1933], [507, 499], [877, 1144], [1208, 1174], [731, 726], [479, 460], [315, 1730], [200, 1756], [424, 1598], [41, 1975], [766, 1178], [602, 597], [1630, 412], [250, 1684], [1830, 1818], [93, 1907]]
