@@ -1,5 +1,12 @@
 from random import randint as rdi
 
+def xxx(state): # xorshift32
+	x = state
+	x ^= (x << 13)
+	x ^= (x >> 17)
+	x ^= (x << 5)
+	return x
+
 power = 18
 vsize = 2**power
 total = 1999
@@ -9,7 +16,7 @@ def create_vec():
     while len(v) < total:
         r = rdi(0,vsize)
         if r not in v:
-            v.append(r)
+            v.append(xxx(r))
     return [1981] + v
     
 v_rise = create_vec()
@@ -82,25 +89,28 @@ def simBFS(tree0, tree1, count, lista):
     ptr1 = tree1
     if (type(ptr0) is int) or (type(ptr1) is int): # should be 'AND' actually
         lista.append([ptr0, ptr1])
-        return count, lista
+        return count + 1, lista
     else:
         if ((ptr0[0] != None) and (ptr1[0] != None)):
             next_ptr0 = ptr0[0]
             next_ptr1 = ptr1[0]
-            count, lista = simBFS(next_ptr0, next_ptr1, count + 1, lista)
+            count, lista = simBFS(next_ptr0, next_ptr1, count, lista)
         if ((ptr0[1] != None) and (ptr1[1] != None)):
             next_ptr0 = ptr0[1]
             next_ptr1 = ptr1[1]
-            count, lista = simBFS(next_ptr0, next_ptr1, count + 1, lista)
-    return count, lista
+            count, lista = simBFS(next_ptr0, next_ptr1, count, lista)
+    return count + 1, lista
 
 count, lista = simBFS(tree_rise, tree_fall, 0, [])
-print('call count:', count)
-print('matches:', len(lista))
-print('pairs:', lista)
-flag = True
-for i in range(len(lista)):
-    if (v_rise[lista[i][0]] != v_fall[lista[i][1]]):
-        flag = False
-print('test:', flag)
+print('* call count:', count)
+print('* matches:', len(lista))
+print('* pairs:', lista)
+print('* test:', v_rise[lista[0][0]] == v_fall[lista[0][1]])
+print('* test:', v_rise[lista[1][0]] == v_fall[lista[1][1]])
+print('* test:', v_rise[lista[0][0]], v_fall[lista[0][1]])
+print('* ', bin(v_rise[lista[0][0]]))
+print('* ', bin(v_fall[lista[0][1]]))
+print('* test:', v_rise[lista[1][0]], v_fall[lista[1][1]])
+print('* ', bin(v_rise[lista[1][0]]))
+print('* ', bin(v_fall[lista[1][1]]))
 
