@@ -1,8 +1,6 @@
 # Sparse Vector-Vector multiplication
 A sparse vector-vector multiplication, that was aimed at lowering the number of comparisons between the compressed sparse indexes of two vectors, for power consumption's sake. What I found, is that it still takes roughly M+N comparisons, as I should have expected, but those are single bit comparisons, very effective, low power and fast in hardware.
 
-Meanwhile the tree data format that it uses also may enable a up to 50% further compression of the respective vector indexes altogether!
-
 Originally I decided to improve the comparison count or at least energy efficiency, because some of the newest AI LLM models have only 1 to 4 bits of data per non-zero dimension, after model compression, in their embedding vectors. In which case the multiplication of vector elements transforms into a simple, cheap table lookup. With that, at the same time, merging the sparse vectors' index lists may become the actual bottleneck...
 
 ## How it works
