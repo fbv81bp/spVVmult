@@ -1,8 +1,8 @@
-## Interpretation
+Interpretation
 
 What this dump file showcases, that even in case of 32 bit wide sparse vector index values, the comparison count stays roughly at O(M+N). I guess that is because the xorshift32 function is like a hash, and the unbalanced tree structure essentially becomes a fairly well balanced hash trie. As a well balanced hash trie the algorithm should largely exit all wrong bramches soon, and only the remaining bits * the number of all indexes remains as useless traversal. So it should be sth like O(2M+M(W-log(M))) where M is the number of indexes and W is their bit width.
 
-### Dump
+Dump
 
 * call count: 4071
 * matches: 26
