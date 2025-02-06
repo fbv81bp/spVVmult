@@ -1,4 +1,5 @@
 from random import randint as rdi
+
 def xxx(state): # xorshift32
 	x = state
 	x ^= (x << 13)
@@ -15,7 +16,7 @@ def create_vec():
     while len(v) < total:
         r = rdi(0,vsize)
         if r not in v:
-            v.append(r)
+            v.append(xxx(r))
     return [1981] + v
     
 v_rise = create_vec()
@@ -105,3 +106,4 @@ print('call count:', count)
 print('matches:', len(lista))
 print('pairs:', lista)
 print('test:', v_rise[lista[0][0]], v_fall[lista[0][1]])
+print('test:', v_rise[lista[1][0]], v_fall[lista[1][1]])
